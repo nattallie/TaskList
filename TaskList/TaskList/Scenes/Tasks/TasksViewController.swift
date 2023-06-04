@@ -17,6 +17,8 @@ public class TasksViewController: UIViewController {
     // MARK: Life cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+
+        presenter.viewDidLoad()
     }
 }
 

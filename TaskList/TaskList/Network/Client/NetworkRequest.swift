@@ -13,6 +13,6 @@ struct NetworkRequest {
     var method: NetworkRequestMethod
     var pathParameters: [String] = []
     var queryParameters: [String: String] = [:]
-    var bodyParameters: [String: Codable] = [:]
+    var bodyParameters: [String: Any] = [:]
     var headers: [String: String] = [:]
 }

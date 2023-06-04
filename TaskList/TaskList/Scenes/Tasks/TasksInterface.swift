@@ -11,4 +11,6 @@ import Foundation
 public protocol TasksViewable: AnyObject {}
 
 // MARK: - Tasks Presentable
-public protocol TasksPresentable {}
+public protocol TasksPresentable {
+    func viewDidLoad()
+}

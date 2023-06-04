@@ -15,6 +15,9 @@
 		0B04DC4C2A2CC8E80055D962 /* NetworkRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */; };
 		0B04DC4E2A2CC8FD0055D962 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */; };
 		0B04DC512A2CC9330055D962 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC502A2CC9330055D962 /* Consts.swift */; };
+		0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */; };
+		0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */; };
+		0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */; };
 		0B95779C2A2CC06E00F337D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95779B2A2CC06E00F337D8 /* AppDelegate.swift */; };
 		0B95779E2A2CC06E00F337D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95779D2A2CC06E00F337D8 /* SceneDelegate.swift */; };
 		0B9577A52A2CC06E00F337D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9577A42A2CC06E00F337D8 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestMethod.swift; sourceTree = "<group>"; };
 		0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0B04DC502A2CC9330055D962 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
+		0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParameters.swift; sourceTree = "<group>"; };
 		0B9577982A2CC06E00F337D8 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B95779B2A2CC06E00F337D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B95779D2A2CC06E00F337D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				0B04DC462A2CC84A0055D962 /* Client */,
+				0B93EB892A2CD87E0024E7A0 /* UseCases */,
+				0B93EB8D2A2CD94A0024E7A0 /* Entities */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -78,6 +86,31 @@
 				0B04DC502A2CC9330055D962 /* Consts.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0B93EB892A2CD87E0024E7A0 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0B93EB8A2A2CD8890024E7A0 /* Auth */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		0B93EB8A2A2CD8890024E7A0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */,
+				0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0B93EB8D2A2CD94A0024E7A0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		0B95778F2A2CC06E00F337D8 = {
@@ -209,6 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */,
+				0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */,
+				0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */,
 				0B95779C2A2CC06E00F337D8 /* AppDelegate.swift in Sources */,
 				0B04DC512A2CC9330055D962 /* Consts.swift in Sources */,
 				0B95779E2A2CC06E00F337D8 /* SceneDelegate.swift in Sources */,

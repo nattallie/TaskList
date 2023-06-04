@@ -10,7 +10,10 @@ import Foundation
 // MARK: - Consts
 struct Consts {
     // MARK: - API
-    struct API {}
+    struct API {
+        static let baseURL: String = "https://api.baubuddy.de"
+        static let authToken: String = "QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz"
+    }
     
     // MARK: - Common
     struct Common {}
