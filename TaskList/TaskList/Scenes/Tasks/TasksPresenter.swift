@@ -14,6 +14,7 @@ public class TasksPresenter: TasksPresentable {
     private let authUseCase: AuthUseCase
     private let fetchTasksUseCase: AllTasksUseCase
     private var allTasks: [TaskDetails] = []
+    private var filteredTasks: [TaskDetails] = []
 
     // MARK: initializer
     init(
@@ -28,7 +29,7 @@ public class TasksPresenter: TasksPresentable {
     
     // MARK: Task Presentable
     public var numberOfTasks: Int {
-        return allTasks.count
+        return filteredTasks.count
     }
     
     public func viewDidLoad() {
@@ -36,7 +37,16 @@ public class TasksPresenter: TasksPresentable {
     }
     
     public func configure(_ cell: CellViewModel, at row: Int) {
-        cell.configure(with: allTasks[row])
+        cell.configure(with: filteredTasks[row])
+    }
+    
+    public func searchTextDidChange(_ text: String) {
+        filteredTasks = allTasks.filter {
+            $0.task.contains(text) ||
+            $0.title.contains(text) ||
+            $0.description.contains(text)
+        }
+        view.refreshAllTasks()
     }
     
     // MARK: private helpers
@@ -56,8 +66,10 @@ public class TasksPresenter: TasksPresentable {
                 )
                 
                 self.allTasks = taskEntities.map { .init(from: $0) }
+                self.filteredTasks = self.allTasks
                 
                 view.refreshAllTasks()
+                view.clearSearchText()
                 syncFetchedTasks()
             } catch {
                 // handle no network case

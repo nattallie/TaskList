@@ -137,11 +137,19 @@ extension TasksViewController: TasksViewable {
             self.tableView.reloadData()
         }
     }
+    
+    public func clearSearchText() {
+        DispatchQueue.main.async {
+            self.searchBar.text = ""
+        }
+    }
 }
 
 // MARK: - Search Bar Delegate
 extension TasksViewController: UISearchBarDelegate {
-    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.searchTextDidChange(searchText)
+    }
 }
 
 // MARK: - Table View Data Source

@@ -10,6 +10,7 @@ import Foundation
 // MARK: - Tasks Viewable
 public protocol TasksViewable: AnyObject {
     func refreshAllTasks()
+    func clearSearchText()
 }
 
 // MARK: - Tasks Presentable
@@ -18,4 +19,5 @@ public protocol TasksPresentable {
     func viewDidLoad()
 
     func configure(_ cell: CellViewModel, at row: Int)
+    func searchTextDidChange(_ text: String)
 }
