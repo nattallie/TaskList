@@ -8,7 +8,10 @@
 import Foundation
 
 // MARK: - Tasks Viewable
-public protocol TasksViewable: AnyObject {}
+public protocol TasksViewable: AnyObject {
+    var numberOfTasks: Int { get }
+    func refreshAllTasks()
+}
 
 // MARK: - Tasks Presentable
 public protocol TasksPresentable {

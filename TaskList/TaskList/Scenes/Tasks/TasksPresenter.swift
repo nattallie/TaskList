@@ -13,6 +13,7 @@ public class TasksPresenter: TasksPresentable {
     private unowned let view: TasksViewable
     private let authUseCase: AuthUseCase
     private let fetchTasksUseCase: AllTasksUseCase
+    private var allTasks: [TaskDetails] = []
 
     // MARK: initializer
     init(
@@ -27,16 +28,34 @@ public class TasksPresenter: TasksPresentable {
     
     // MARK: Task Presentable
     public func viewDidLoad() {
+        refreshAllTasks()
+    }
+    
+    // MARK: private helpers
+    private func refreshAllTasks() {
         Task.init {
-            let entity = try await authUseCase.auth(
-                parameters: .init(
-                    username: "365",
-                    password: "1",
-                    token: Consts.API.authToken
+            do {
+                let authEntity = try await authUseCase.auth(
+                    parameters: .init(
+                        username: Consts.API.constUsername,
+                        password: Consts.API.constPassword,
+                        token: Consts.API.authToken
+                    )
                 )
-            )
-            
-            let tasksEntity = try await fetchTasksUseCase.fetch(parameters: .init(accessToken: entity.oauth.accessToken))
+                
+                let allTasks = try await fetchTasksUseCase.fetch(
+                    parameters: .init(accessToken: authEntity.oauth.accessToken)
+                )
+                
+                view.refreshAllTasks()
+                syncFetchedTasks()
+            } catch {
+                // handle no network case
+            }
         }
+    }
+    
+    private func syncFetchedTasks() {
+        // handle core data saving
     }
 }

@@ -13,6 +13,8 @@ struct Consts {
     struct API {
         static let baseURL: String = "https://api.baubuddy.de"
         static let authToken: String = "QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz"
+        static let constUsername: String = "365"
+        static let constPassword: String = "1"
     }
     
     // MARK: - Common
