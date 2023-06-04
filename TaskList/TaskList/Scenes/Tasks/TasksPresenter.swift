@@ -49,6 +49,10 @@ public class TasksPresenter: TasksPresentable {
         view.refreshAllTasks()
     }
     
+    public func pullToRefresh() {
+        refreshAllTasks()
+    }
+    
     // MARK: private helpers
     private func refreshAllTasks() {
         Task.init {
@@ -71,8 +75,10 @@ public class TasksPresenter: TasksPresentable {
                 view.refreshAllTasks()
                 view.clearSearchText()
                 syncFetchedTasks()
+                view.endRefreshing()
             } catch {
                 // handle no network case
+                view.endRefreshing()
             }
         }
     }

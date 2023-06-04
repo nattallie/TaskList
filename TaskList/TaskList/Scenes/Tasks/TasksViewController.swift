@@ -34,6 +34,14 @@ public class TasksViewController: UIViewController {
         return searchBar
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl: UIRefreshControl = .init()
+        refreshControl.translatesAutoresizingMaskIntoConstraints = false
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView: UITableView = .init()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +90,7 @@ public class TasksViewController: UIViewController {
         containerView.addSubview(titleLabel)
         containerView.addSubview(searchBar)
         containerView.addSubview(tableView)
+        tableView.addSubview(refreshControl)
     }
     
     private func addConstraints() {
@@ -128,6 +137,11 @@ public class TasksViewController: UIViewController {
     private func keyboardWillHide(notification: Notification) {
         tableView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
+    // MARK: Observers
+    @objc func refresh(_ sender: AnyObject) {
+        presenter.pullToRefresh()
+    }
 }
 
 // MARK: - Tasks Viewable
@@ -141,6 +155,13 @@ extension TasksViewController: TasksViewable {
     public func clearSearchText() {
         DispatchQueue.main.async {
             self.searchBar.text = ""
+            self.searchBar.resignFirstResponder()
+        }
+    }
+    
+    public func endRefreshing() {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
         }
     }
 }
