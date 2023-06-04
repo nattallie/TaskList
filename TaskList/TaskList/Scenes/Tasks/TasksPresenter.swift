@@ -27,8 +27,16 @@ public class TasksPresenter: TasksPresentable {
     }
     
     // MARK: Task Presentable
+    public var numberOfTasks: Int {
+        return allTasks.count
+    }
+    
     public func viewDidLoad() {
         refreshAllTasks()
+    }
+    
+    public func configure(_ cell: CellViewModel, at row: Int) {
+        cell.configure(with: allTasks[row])
     }
     
     // MARK: private helpers
@@ -43,9 +51,11 @@ public class TasksPresenter: TasksPresentable {
                     )
                 )
                 
-                let allTasks = try await fetchTasksUseCase.fetch(
+                let taskEntities: [TaskEntity] = try await fetchTasksUseCase.fetch(
                     parameters: .init(accessToken: authEntity.oauth.accessToken)
                 )
+                
+                self.allTasks = taskEntities.map { .init(from: $0) }
                 
                 view.refreshAllTasks()
                 syncFetchedTasks()

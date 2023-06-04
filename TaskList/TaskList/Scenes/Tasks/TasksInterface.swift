@@ -9,11 +9,13 @@ import Foundation
 
 // MARK: - Tasks Viewable
 public protocol TasksViewable: AnyObject {
-    var numberOfTasks: Int { get }
     func refreshAllTasks()
 }
 
 // MARK: - Tasks Presentable
 public protocol TasksPresentable {
+    var numberOfTasks: Int { get }
     func viewDidLoad()
+
+    func configure(_ cell: CellViewModel, at row: Int)
 }
