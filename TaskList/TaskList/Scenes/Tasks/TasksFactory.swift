@@ -16,7 +16,11 @@ public struct TasksFactory {
     public static func create() -> UIViewController {
         let viewController: TasksViewController = .init()
         
-        let presenter: TasksPresenter = .init(view: viewController, authUseCase: AuthUseCaseImpl())
+        let presenter: TasksPresenter = .init(
+            view: viewController,
+            authUseCase: AuthUseCaseImpl(),
+            fetchTasksUseCase: AllTasksUseCaseImpl()
+        )
         
         viewController.presenter = presenter
         

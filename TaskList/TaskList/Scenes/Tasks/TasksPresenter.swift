@@ -12,14 +12,17 @@ public class TasksPresenter: TasksPresentable {
     // MARK: Properties
     private unowned let view: TasksViewable
     private let authUseCase: AuthUseCase
-    
+    private let fetchTasksUseCase: AllTasksUseCase
+
     // MARK: initializer
     init(
         view: TasksViewable,
-        authUseCase: AuthUseCase
+        authUseCase: AuthUseCase,
+        fetchTasksUseCase: AllTasksUseCase
     ) {
         self.view = view
         self.authUseCase = authUseCase
+        self.fetchTasksUseCase = fetchTasksUseCase
     }
     
     // MARK: Task Presentable
@@ -31,7 +34,9 @@ public class TasksPresenter: TasksPresentable {
                     password: "1",
                     token: Consts.API.authToken
                 )
-            )         
+            )
+            
+            let tasksEntity = try await fetchTasksUseCase.fetch(parameters: .init(accessToken: entity.oauth.accessToken))
         }
     }
 }

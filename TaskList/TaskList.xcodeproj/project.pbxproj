@@ -18,6 +18,9 @@
 		0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */; };
 		0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */; };
 		0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */; };
+		0B93EB942A2D16520024E7A0 /* AllTasksParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB932A2D16520024E7A0 /* AllTasksParameters.swift */; };
+		0B93EB962A2D16900024E7A0 /* AllTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB952A2D16900024E7A0 /* AllTasksUseCase.swift */; };
+		0B93EB992A2D16FD0024E7A0 /* AllTasksEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB982A2D16FD0024E7A0 /* AllTasksEntity.swift */; };
 		0B95779C2A2CC06E00F337D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95779B2A2CC06E00F337D8 /* AppDelegate.swift */; };
 		0B95779E2A2CC06E00F337D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95779D2A2CC06E00F337D8 /* SceneDelegate.swift */; };
 		0B9577A52A2CC06E00F337D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9577A42A2CC06E00F337D8 /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 		0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
 		0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParameters.swift; sourceTree = "<group>"; };
+		0B93EB932A2D16520024E7A0 /* AllTasksParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksParameters.swift; sourceTree = "<group>"; };
+		0B93EB952A2D16900024E7A0 /* AllTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksUseCase.swift; sourceTree = "<group>"; };
+		0B93EB982A2D16FD0024E7A0 /* AllTasksEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksEntity.swift; sourceTree = "<group>"; };
 		0B9577982A2CC06E00F337D8 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B95779B2A2CC06E00F337D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B95779D2A2CC06E00F337D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				0B93EB8A2A2CD8890024E7A0 /* Auth */,
+				0B93EB922A2D162E0024E7A0 /* AllTasks */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -109,8 +116,18 @@
 			isa = PBXGroup;
 			children = (
 				0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */,
+				0B93EB982A2D16FD0024E7A0 /* AllTasksEntity.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		0B93EB922A2D162E0024E7A0 /* AllTasks */ = {
+			isa = PBXGroup;
+			children = (
+				0B93EB932A2D16520024E7A0 /* AllTasksParameters.swift */,
+				0B93EB952A2D16900024E7A0 /* AllTasksUseCase.swift */,
+			);
+			path = AllTasks;
 			sourceTree = "<group>";
 		};
 		0B95778F2A2CC06E00F337D8 = {
@@ -243,8 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */,
+				0B93EB962A2D16900024E7A0 /* AllTasksUseCase.swift in Sources */,
 				0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */,
+				0B93EB942A2D16520024E7A0 /* AllTasksParameters.swift in Sources */,
 				0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */,
+				0B93EB992A2D16FD0024E7A0 /* AllTasksEntity.swift in Sources */,
 				0B95779C2A2CC06E00F337D8 /* AppDelegate.swift in Sources */,
 				0B04DC512A2CC9330055D962 /* Consts.swift in Sources */,
 				0B95779E2A2CC06E00F337D8 /* SceneDelegate.swift in Sources */,
