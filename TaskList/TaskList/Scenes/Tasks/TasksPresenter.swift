@@ -13,6 +13,8 @@ public class TasksPresenter: TasksPresentable {
     private unowned let view: TasksViewable
     private let authUseCase: AuthUseCase
     private let fetchTasksUseCase: AllTasksUseCase
+    private let saveTasksLocallyUseCase: SaveTasksLocallyUseCase
+    private let fetchTasksOfflineUseCase: AllTasksOfflineUseCase
     private var allTasks: [TaskDetails] = []
     private var filteredTasks: [TaskDetails] = []
 
@@ -20,11 +22,15 @@ public class TasksPresenter: TasksPresentable {
     init(
         view: TasksViewable,
         authUseCase: AuthUseCase,
-        fetchTasksUseCase: AllTasksUseCase
+        fetchTasksUseCase: AllTasksUseCase,
+        saveTasksLocallyUseCase: SaveTasksLocallyUseCase,
+        fetchTasksOfflineUseCase: AllTasksOfflineUseCase
     ) {
         self.view = view
         self.authUseCase = authUseCase
         self.fetchTasksUseCase = fetchTasksUseCase
+        self.saveTasksLocallyUseCase = saveTasksLocallyUseCase
+        self.fetchTasksOfflineUseCase = fetchTasksOfflineUseCase
     }
     
     // MARK: Task Presentable

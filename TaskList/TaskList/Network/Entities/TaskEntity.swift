@@ -8,9 +8,16 @@
 import Foundation
 
 // MARK: - Task Entity
-struct TaskEntity: Codable {
+public struct TaskEntity: Codable {
     let task: String
     let title: String
     let description: String
     let colorCode: String
+    
+    public init(from entity: TaskDetailsEntity) {
+        self.task = entity.task ?? ""
+        self.title = entity.title ?? ""
+        self.description = entity.taskDescription ?? ""
+        self.colorCode = entity.colorCode ?? ""
+    }
 }

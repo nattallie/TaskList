@@ -20,6 +20,11 @@ struct Consts {
     // MARK: - Common
     struct Common {}
     
+    // MARK: - Core Data
+    struct CoreData {
+        static let tasksEntityName: String = "Tasks"
+    }
+    
     // MARK: - Network
     struct Network {
         static let networkError: String = "Network error"

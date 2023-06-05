@@ -16,6 +16,10 @@
 		0B04DC4E2A2CC8FD0055D962 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */; };
 		0B04DC512A2CC9330055D962 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC502A2CC9330055D962 /* Consts.swift */; };
 		0B5DC2C82A2DF8F0008A9A61 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */; };
+		0B5DC2CA2A2E3F50008A9A61 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2C92A2E3F50008A9A61 /* CoreDataManager.swift */; };
+		0B5DC2CD2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2CC2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift */; };
+		0B5DC2CF2A2E430B008A9A61 /* SaveTasksLocallyParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2CE2A2E430B008A9A61 /* SaveTasksLocallyParameters.swift */; };
+		0B5DC2D22A2E4429008A9A61 /* AllTasksOfflineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2D12A2E4429008A9A61 /* AllTasksOfflineUseCase.swift */; };
 		0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */; };
 		0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */; };
 		0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */; };
@@ -49,6 +53,10 @@
 		0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0B04DC502A2CC9330055D962 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		0B5DC2C72A2DF8F0008A9A61 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
+		0B5DC2C92A2E3F50008A9A61 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		0B5DC2CC2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTasksLocallyUseCase.swift; sourceTree = "<group>"; };
+		0B5DC2CE2A2E430B008A9A61 /* SaveTasksLocallyParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTasksLocallyParameters.swift; sourceTree = "<group>"; };
+		0B5DC2D12A2E4429008A9A61 /* AllTasksOfflineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksOfflineUseCase.swift; sourceTree = "<group>"; };
 		0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
 		0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParameters.swift; sourceTree = "<group>"; };
@@ -118,8 +126,26 @@
 			isa = PBXGroup;
 			children = (
 				0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */,
+				0B5DC2C92A2E3F50008A9A61 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0B5DC2CB2A2E42C5008A9A61 /* SaveTasks */ = {
+			isa = PBXGroup;
+			children = (
+				0B5DC2CE2A2E430B008A9A61 /* SaveTasksLocallyParameters.swift */,
+				0B5DC2CC2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift */,
+			);
+			path = SaveTasks;
+			sourceTree = "<group>";
+		};
+		0B5DC2D02A2E43F3008A9A61 /* AllTasksOffline */ = {
+			isa = PBXGroup;
+			children = (
+				0B5DC2D12A2E4429008A9A61 /* AllTasksOfflineUseCase.swift */,
+			);
+			path = AllTasksOffline;
 			sourceTree = "<group>";
 		};
 		0B93EB892A2CD87E0024E7A0 /* UseCases */ = {
@@ -127,6 +153,8 @@
 			children = (
 				0B93EB8A2A2CD8890024E7A0 /* Auth */,
 				0B93EB922A2D162E0024E7A0 /* AllTasks */,
+				0B5DC2CB2A2E42C5008A9A61 /* SaveTasks */,
+				0B5DC2D02A2E43F3008A9A61 /* AllTasksOffline */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -329,8 +357,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5DC2CF2A2E430B008A9A61 /* SaveTasksLocallyParameters.swift in Sources */,
 				0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */,
+				0B5DC2D22A2E4429008A9A61 /* AllTasksOfflineUseCase.swift in Sources */,
 				0B93EB962A2D16900024E7A0 /* AllTasksUseCase.swift in Sources */,
+				0B5DC2CD2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift in Sources */,
 				0B93EBA12A2D20BD0024E7A0 /* UIApplication.rootWindow.swift in Sources */,
 				0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */,
 				0B93EBA32A2D21290024E7A0 /* NSLayoutConstraint.reference.swift in Sources */,
@@ -354,6 +385,7 @@
 				0B04DC402A2CC3C70055D962 /* TasksInterface.swift in Sources */,
 				0B93EBA72A2D27400024E7A0 /* CellProtocols.swift in Sources */,
 				0B9577B52A2CC3AC00F337D8 /* TasksFactory.swift in Sources */,
+				0B5DC2CA2A2E3F50008A9A61 /* CoreDataManager.swift in Sources */,
 				0B04DC4C2A2CC8E80055D962 /* NetworkRequestMethod.swift in Sources */,
 				0B04DC4A2A2CC8CD0055D962 /* NetworkRequest.swift in Sources */,
 				0B04DC482A2CC8530055D962 /* NetworkClient.swift in Sources */,
