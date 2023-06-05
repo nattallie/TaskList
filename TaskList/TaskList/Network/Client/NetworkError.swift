@@ -14,6 +14,7 @@ enum NetworkError: LocalizedError {
     case invalidBodyParameter
     case invalidResponse
     case invalidData
+    case noNetwork
     
     var localizedDescription: String {
         switch self {
@@ -27,6 +28,8 @@ enum NetworkError: LocalizedError {
             return Consts.Network.invalidResponse
         case .invalidData:
             return Consts.Network.invalidData
+        case .noNetwork:
+            return Consts.Network.noNetwork
         }
     }
 }

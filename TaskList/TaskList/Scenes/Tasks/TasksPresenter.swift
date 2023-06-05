@@ -75,21 +75,29 @@ public class TasksPresenter: TasksPresentable {
                     parameters: .init(accessToken: authEntity.oauth.accessToken)
                 )
                 
-                self.allTasks = taskEntities.map { .init(from: $0) }
-                self.filteredTasks = self.allTasks
-                
-                view.refreshAllTasks()
-                view.clearSearchText()
+                populateTasks(tasks: taskEntities)
                 syncFetchedTasks()
-                view.endRefreshing()
             } catch {
-                // handle no network case
-                view.endRefreshing()
+                if let error = error as? NetworkError, error == .noNetwork {
+                    let taskEntities: [TaskEntity] = try fetchTasksOfflineUseCase.fetch()
+                    populateTasks(tasks: taskEntities)
+                } else {
+                    view.endRefreshing()
+                }
             }
         }
     }
     
+    private func populateTasks(tasks: [TaskEntity]) {
+        allTasks = tasks.map { .init(from: $0) }
+        filteredTasks = allTasks
+        
+        view.refreshAllTasks()
+        view.clearSearchText()
+        view.endRefreshing()
+    }
+    
     private func syncFetchedTasks() {
-        // handle core data saving
+        saveTasksLocallyUseCase.sync(parameters: .init(tasks: allTasks))
     }
 }

@@ -10,15 +10,16 @@ import CoreData
 
 // MARK: - All Tasks Offline Use Case
 protocol AllTasksOfflineUseCase {
-    func fetch() async throws -> [TaskEntity]
+    func fetch() throws -> [TaskEntity]
 }
 
 // MARK: - All Tasks Offline Use Case Implementation
 final class AllTasksOfflineUseCaseImpl: AllTasksOfflineUseCase {
-    func fetch() async throws -> [TaskEntity] {
+    private let managedContext = AppDelegate.sharedAppDelegate.coreDataManager.managedContext
+    
+    func fetch() throws -> [TaskEntity] {
         let tasksFetch: NSFetchRequest<TaskDetailsEntity> = TaskDetailsEntity.fetchRequest()
         do {
-            let managedContext = await AppDelegate.sharedAppDelegate.coreDataManager.managedContext
             let results = try managedContext.fetch(tasksFetch)
             return results.map { .init(from: $0) }
         } catch {

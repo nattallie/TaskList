@@ -9,14 +9,14 @@ import Foundation
 
 // MARK: - Save Tasks Locally Use Case
 protocol SaveTasksLocallyUseCase {
-    func sync(parameters: SaveTasksLocallyParameters) async throws
+    func sync(parameters: SaveTasksLocallyParameters)
 }
 
 // MARK: - Save Tasks Locally Use Case Implementation
 final class SaveTasksLocallyUseCaseImpl: SaveTasksLocallyUseCase {
-    func sync(parameters: SaveTasksLocallyParameters) async throws {
-        
-        let managedContext = await AppDelegate.sharedAppDelegate.coreDataManager.managedContext
+    private let managedContext = AppDelegate.sharedAppDelegate.coreDataManager.managedContext
+    
+    func sync(parameters: SaveTasksLocallyParameters) {
         parameters.tasks.forEach { task in
             let newTask = TaskDetailsEntity(context: managedContext)
             newTask.setValue(task.task, forKey: #keyPath(TaskDetailsEntity.task))
@@ -24,7 +24,6 @@ final class SaveTasksLocallyUseCaseImpl: SaveTasksLocallyUseCase {
             newTask.setValue(task.description, forKey: #keyPath(TaskDetailsEntity.taskDescription))
             newTask.setValue(task.colorCode, forKey: #keyPath(TaskDetailsEntity.colorCode))
         }
-        
-        await AppDelegate.sharedAppDelegate.coreDataManager.saveContext()
+        AppDelegate.sharedAppDelegate.coreDataManager.saveContext()
     }
 }

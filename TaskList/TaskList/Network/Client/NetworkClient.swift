@@ -19,19 +19,28 @@ final class NetworkClient {
     func send<Entity: Decodable>(request: NetworkRequest) async throws -> Entity {
         let urlRequest: URLRequest = try createURLRequestFrom(request)
 
-        let (data, response): (Data, URLResponse) = try await URLSession.shared.data(for: urlRequest)
-        guard
-            let httpResponse: HTTPURLResponse = response as? HTTPURLResponse,
-            (200...299).contains(httpResponse.statusCode)
-        else {
-            throw NetworkError.invalidResponse
-        }
-
         do {
-            let entity: Entity = try JSONDecoder().decode(Entity.self, from: data)
-            return entity
+            let (data, response): (Data, URLResponse) = try await URLSession.shared.data(for: urlRequest)
+            guard
+                let httpResponse: HTTPURLResponse = response as? HTTPURLResponse,
+                (200...299).contains(httpResponse.statusCode)
+            else {
+                throw NetworkError.invalidResponse
+            }
+
+            do {
+                let entity: Entity = try JSONDecoder().decode(Entity.self, from: data)
+                return entity
+            } catch {
+                throw NetworkError.invalidData
+            }
         } catch {
-            throw NetworkError.invalidData
+            let errorCode = (error as NSError).code
+            if errorCode == URLError.networkConnectionLost.rawValue || errorCode == URLError.notConnectedToInternet.rawValue {
+                throw NetworkError.noNetwork
+            } else {
+                throw error
+            }
         }
     }
     

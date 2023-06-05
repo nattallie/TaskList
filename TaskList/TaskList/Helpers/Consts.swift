@@ -33,6 +33,7 @@ struct Consts {
         static let invalidBodyParameter: String = "Error is caused because of body parameters"
         static let invalidResponse: String = "Error is caused because of invalid network response"
         static let invalidData: String = "Error is caused because of invalid data"
+        static let noNetwork: String = "Not connected to Network or network connection lost"
     }
     
     // MARK: - Scenes
