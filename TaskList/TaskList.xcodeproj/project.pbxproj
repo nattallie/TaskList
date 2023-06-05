@@ -15,6 +15,7 @@
 		0B04DC4C2A2CC8E80055D962 /* NetworkRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */; };
 		0B04DC4E2A2CC8FD0055D962 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */; };
 		0B04DC512A2CC9330055D962 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC502A2CC9330055D962 /* Consts.swift */; };
+		0B5DC2C82A2DF8F0008A9A61 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */; };
 		0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */; };
 		0B93EB8F2A2CD95D0024E7A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */; };
 		0B93EB912A2CDB6A0024E7A0 /* AuthParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */; };
@@ -47,6 +48,7 @@
 		0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestMethod.swift; sourceTree = "<group>"; };
 		0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0B04DC502A2CC9330055D962 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		0B5DC2C72A2DF8F0008A9A61 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 		0B93EB8B2A2CD8940024E7A0 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		0B93EB8E2A2CD95D0024E7A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
 		0B93EB902A2CDB6A0024E7A0 /* AuthParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParameters.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 				0B04DC502A2CC9330055D962 /* Consts.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0B5DC2C52A2DF8DA008A9A61 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		0B93EB892A2CD87E0024E7A0 /* UseCases */ = {
@@ -210,6 +220,7 @@
 				0B9577B02A2CC21F00F337D8 /* Scenes */,
 				0B93EBA82A2D291F0024E7A0 /* Views */,
 				0B04DC452A2CC8300055D962 /* Network */,
+				0B5DC2C52A2DF8DA008A9A61 /* CoreData */,
 				0B93EB9C2A2D1AFB0024E7A0 /* SharedModels */,
 				0B93EB9D2A2D1CAD0024E7A0 /* Extensions */,
 				0B04DC4F2A2CC9270055D962 /* Helpers */,
@@ -326,6 +337,7 @@
 				0B93EB942A2D16520024E7A0 /* AllTasksParameters.swift in Sources */,
 				0B93EBAD2A2D2E0B0024E7A0 /* TaskTableViewCellUIModel.swift in Sources */,
 				0B93EB8C2A2CD8940024E7A0 /* AuthUseCase.swift in Sources */,
+				0B5DC2C82A2DF8F0008A9A61 /* Tasks.xcdatamodeld in Sources */,
 				0B93EB992A2D16FD0024E7A0 /* TaskEntity.swift in Sources */,
 				0B93EB9F2A2D1CC10024E7A0 /* UIView.NSLayoutConstraints.swift in Sources */,
 				0B95779C2A2CC06E00F337D8 /* AppDelegate.swift in Sources */,
@@ -552,6 +564,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B5DC2C72A2DF8F0008A9A61 /* Tasks.xcdatamodel */,
+			);
+			currentVersion = 0B5DC2C72A2DF8F0008A9A61 /* Tasks.xcdatamodel */;
+			path = Tasks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B9577902A2CC06E00F337D8 /* Project object */;
 }
