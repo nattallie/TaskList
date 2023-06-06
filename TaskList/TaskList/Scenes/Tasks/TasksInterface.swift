@@ -22,4 +22,10 @@ public protocol TasksPresentable {
     func configure(_ cell: CellViewModel, at row: Int)
     func searchTextDidChange(_ text: String)
     func pullToRefresh()
+    func didTapQRButton()
+}
+
+// MARK: - Tasks Routable
+public protocol TasksRoutable {
+    func navigateToQRScanner()
 }

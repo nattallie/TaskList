@@ -21,10 +21,18 @@ public class TasksViewController: UIViewController {
         let label: UILabel = .init()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.text = "Task List"
+        label.text = Consts.Scenes.Tasks.title
         label.font = Model.Font.title
         label.textColor = Model.Color.title
         return label
+    }()
+    
+    private lazy var QRButton: UIButton = {
+        let button: UIButton = .init(type: .roundedRect)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapQRButton), for: .touchUpInside)
+        button.setImage(.init(systemName: "qrcode.viewfinder"), for: .normal)
+        return button
     }()
     
     private lazy var searchBar: UISearchBar = {
@@ -37,7 +45,7 @@ public class TasksViewController: UIViewController {
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl: UIRefreshControl = .init()
         refreshControl.translatesAutoresizingMaskIntoConstraints = false
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: Consts.Scenes.Tasks.pullToRefresh)
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         return refreshControl
     }()
@@ -88,6 +96,7 @@ public class TasksViewController: UIViewController {
         view.addSubview(containerView)
         
         containerView.addSubview(titleLabel)
+        containerView.addSubview(QRButton)
         containerView.addSubview(searchBar)
         containerView.addSubview(tableView)
         tableView.addSubview(refreshControl)
@@ -99,6 +108,9 @@ public class TasksViewController: UIViewController {
             titleLabel.leadingConstraint(toView: containerView, constant: Model.Layout.horizontalMargin),
             titleLabel.trailingConstraint(toView: containerView, constant: -Model.Layout.horizontalMargin),
             titleLabel.topConstraint(toView: containerView).reference(in: &titleTopConstraint),
+            
+            QRButton.trailingConstraint(toView: containerView, constant: -Model.Layout.horizontalMargin),
+            QRButton.topConstraint(toView: titleLabel),
         
             searchBar.leadingConstraint(toView: containerView, constant: Model.Layout.horizontalMargin),
             searchBar.trailingConstraint(toView: containerView, constant: -Model.Layout.horizontalMargin),
@@ -141,6 +153,10 @@ public class TasksViewController: UIViewController {
     // MARK: Observers
     @objc func refresh(_ sender: AnyObject) {
         presenter.pullToRefresh()
+    }
+    
+    @objc func didTapQRButton(_ sender: UIButton) {
+        presenter.didTapQRButton()
     }
 }
 

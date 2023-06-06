@@ -41,7 +41,10 @@ struct Consts {
     // MARK: - Scenes
     struct Scenes {
         // MARK: Tasks
-        struct Tasks {}
+        struct Tasks {
+            static let title: String = "Task List"
+            static let pullToRefresh: String = "Pull to refresh"
+        }
         
         // MARK: QR Scanner
         struct QRScanner {

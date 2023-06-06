@@ -15,6 +15,7 @@
 		0B04DC4C2A2CC8E80055D962 /* NetworkRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */; };
 		0B04DC4E2A2CC8FD0055D962 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */; };
 		0B04DC512A2CC9330055D962 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC502A2CC9330055D962 /* Consts.swift */; };
+		0B25120B2A2F2DAD00FC06E8 /* TasksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25120A2A2F2DAD00FC06E8 /* TasksRouter.swift */; };
 		0B5DC2C82A2DF8F0008A9A61 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */; };
 		0B5DC2CA2A2E3F50008A9A61 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2C92A2E3F50008A9A61 /* CoreDataManager.swift */; };
 		0B5DC2CD2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2CC2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift */; };
@@ -57,6 +58,7 @@
 		0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestMethod.swift; sourceTree = "<group>"; };
 		0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0B04DC502A2CC9330055D962 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		0B25120A2A2F2DAD00FC06E8 /* TasksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRouter.swift; sourceTree = "<group>"; };
 		0B5DC2C72A2DF8F0008A9A61 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 		0B5DC2C92A2E3F50008A9A61 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0B5DC2CC2A2E42F9008A9A61 /* SaveTasksLocallyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTasksLocallyUseCase.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				0B04DC3F2A2CC3C70055D962 /* TasksInterface.swift */,
 				0B9577B22A2CC39A00F337D8 /* TasksViewController.swift */,
 				0B04DC412A2CC3D00055D962 /* TasksPresenter.swift */,
+				0B25120A2A2F2DAD00FC06E8 /* TasksRouter.swift */,
 				0B04DC432A2CC3E00055D962 /* TasksUIModel.swift */,
 			);
 			path = Tasks;
@@ -411,6 +414,7 @@
 				0B93EBAA2A2D29340024E7A0 /* TaskTableViewCell.swift in Sources */,
 				0B04DC422A2CC3D00055D962 /* TasksPresenter.swift in Sources */,
 				0B04DC402A2CC3C70055D962 /* TasksInterface.swift in Sources */,
+				0B25120B2A2F2DAD00FC06E8 /* TasksRouter.swift in Sources */,
 				0B93EBA72A2D27400024E7A0 /* CellProtocols.swift in Sources */,
 				0B9577B52A2CC3AC00F337D8 /* TasksFactory.swift in Sources */,
 				0B5DC2CA2A2E3F50008A9A61 /* CoreDataManager.swift in Sources */,

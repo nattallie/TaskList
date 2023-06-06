@@ -18,6 +18,7 @@ public struct TasksFactory {
         
         let presenter: TasksPresenter = .init(
             view: viewController,
+            router: TasksRouter(controller: viewController),
             authUseCase: AuthUseCaseImpl(),
             fetchTasksUseCase: AllTasksUseCaseImpl(),
             saveTasksLocallyUseCase: SaveTasksLocallyUseCaseImpl(),

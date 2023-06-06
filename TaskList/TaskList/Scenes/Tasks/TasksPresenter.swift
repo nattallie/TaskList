@@ -11,6 +11,7 @@ import Foundation
 public class TasksPresenter: TasksPresentable {
     // MARK: Properties
     private unowned let view: TasksViewable
+    private var router: TasksRoutable
     private let authUseCase: AuthUseCase
     private let fetchTasksUseCase: AllTasksUseCase
     private let saveTasksLocallyUseCase: SaveTasksLocallyUseCase
@@ -21,12 +22,14 @@ public class TasksPresenter: TasksPresentable {
     // MARK: initializer
     init(
         view: TasksViewable,
+        router: TasksRoutable,
         authUseCase: AuthUseCase,
         fetchTasksUseCase: AllTasksUseCase,
         saveTasksLocallyUseCase: SaveTasksLocallyUseCase,
         fetchTasksOfflineUseCase: AllTasksOfflineUseCase
     ) {
         self.view = view
+        self.router = router
         self.authUseCase = authUseCase
         self.fetchTasksUseCase = fetchTasksUseCase
         self.saveTasksLocallyUseCase = saveTasksLocallyUseCase
@@ -57,6 +60,10 @@ public class TasksPresenter: TasksPresentable {
     
     public func pullToRefresh() {
         refreshAllTasks()
+    }
+    
+    public func didTapQRButton() {
+        router.navigateToQRScanner()
     }
     
     // MARK: private helpers
