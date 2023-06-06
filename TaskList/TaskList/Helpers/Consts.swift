@@ -18,7 +18,9 @@ struct Consts {
     }
     
     // MARK: - Common
-    struct Common {}
+    struct Common {
+        static let OK: String = "OK"
+    }
     
     // MARK: - Core Data
     struct CoreData {
@@ -40,5 +42,11 @@ struct Consts {
     struct Scenes {
         // MARK: Tasks
         struct Tasks {}
+        
+        // MARK: QR Scanner
+        struct QRScanner {
+            static let qrScanSuccess: String = "Message detected"
+            static let qrScanSuccessMessage: String = "QR captured successfully. Detected message: "
+        }
     }
 }
