@@ -125,7 +125,9 @@ extension QRScannerViewController: QRScannerViewable {
                 }
             )
         )
-            
-        present(alert, animated: true)
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)            
+        }
     }
 }

@@ -39,6 +39,7 @@ public class TasksViewController: UIViewController {
         let searchBar: UISearchBar = .init()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
         return searchBar
     }()
     
@@ -165,12 +166,15 @@ extension TasksViewController: TasksViewable {
     public func refreshAllTasks() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            if self.tableView.numberOfRows(inSection: 0) > 0 {
+                self.tableView.scrollToRow(at: .init(row: 0, section: 0), at: .top, animated: true)
+            }
         }
     }
     
-    public func clearSearchText() {
+    public func setSearchText(_ text: String) {
         DispatchQueue.main.async {
-            self.searchBar.text = ""
+            self.searchBar.text = text
             self.searchBar.resignFirstResponder()
         }
     }
@@ -180,12 +184,41 @@ extension TasksViewController: TasksViewable {
             self.refreshControl.endRefreshing()
         }
     }
+    
+    public func showAlertMessage(title: String, message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: Consts.Common.OK,
+                style: .default,
+                handler: { [weak self] _ in
+                    self?.presenter.didTapAlertActionOK()
+                }
+            )
+        )
+            
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+    }
 }
 
 // MARK: - Search Bar Delegate
 extension TasksViewController: UISearchBarDelegate {
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.searchTextDidChange(searchText)
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        presenter.searchTextDidChange(searchBar.text ?? "")
+        searchBar.resignFirstResponder()
+    }
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        presenter.searchTextDidChange(searchBar.text ?? "")
+        searchBar.resignFirstResponder()
     }
 }
 

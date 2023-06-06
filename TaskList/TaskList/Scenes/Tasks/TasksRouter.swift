@@ -17,8 +17,8 @@ public class TasksRouter: TasksRoutable {
         self.controller = controller
     }
     
-    public func navigateToQRScanner() {
-        let scannerVC: UIViewController = QRScannerFactory.create()
+    public func navigateToQRScanner(capturedTextSaverCall: @escaping (String) -> Void) {
+        let scannerVC: UIViewController = QRScannerFactory.create(capturedTextSaver: capturedTextSaverCall)
         controller.modalPresentationStyle = .overFullScreen
         controller.present(scannerVC, animated: true)
     }

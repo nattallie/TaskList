@@ -44,6 +44,8 @@ struct Consts {
         struct Tasks {
             static let title: String = "Task List"
             static let pullToRefresh: String = "Pull to refresh"
+            static let noNetwork: String = "No Network Connection"
+            static let noNetworkMessage: String = "You are currently in offline mode. To fetch tasks online, check your connection and pull to refresh."
         }
         
         // MARK: QR Scanner

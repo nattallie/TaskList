@@ -10,8 +10,9 @@ import Foundation
 // MARK: - Tasks Viewable
 public protocol TasksViewable: AnyObject {
     func refreshAllTasks()
-    func clearSearchText()
+    func setSearchText(_ text: String)
     func endRefreshing()
+    func showAlertMessage(title: String, message: String)
 }
 
 // MARK: - Tasks Presentable
@@ -23,9 +24,10 @@ public protocol TasksPresentable {
     func searchTextDidChange(_ text: String)
     func pullToRefresh()
     func didTapQRButton()
+    func didTapAlertActionOK()
 }
 
 // MARK: - Tasks Routable
 public protocol TasksRoutable {
-    func navigateToQRScanner()
+    func navigateToQRScanner(capturedTextSaverCall: @escaping (String) -> Void)
 }

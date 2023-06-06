@@ -36,7 +36,11 @@ final class NetworkClient {
             }
         } catch {
             let errorCode = (error as NSError).code
-            if errorCode == URLError.networkConnectionLost.rawValue || errorCode == URLError.notConnectedToInternet.rawValue {
+            if
+                errorCode == URLError.networkConnectionLost.rawValue ||
+                errorCode == URLError.notConnectedToInternet.rawValue ||
+                errorCode == URLError.dataNotAllowed.rawValue
+            {
                 throw NetworkError.noNetwork
             } else {
                 throw error

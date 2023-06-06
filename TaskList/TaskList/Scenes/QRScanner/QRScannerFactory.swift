@@ -13,11 +13,12 @@ public struct QRScannerFactory {
     private init() {}
     
     // MARK: Factory
-    public static func create() -> UIViewController {
+    public static func create(capturedTextSaver: @escaping (String) -> Void) -> UIViewController {
         let viewController: QRScannerViewController = .init()
         
         let presenter: QRScannerPresenter = .init(
-            view: viewController
+            view: viewController,
+            router: QRScannerRouter(controller: viewController, capturedTextSaver: capturedTextSaver)
         )
         
         viewController.presenter = presenter

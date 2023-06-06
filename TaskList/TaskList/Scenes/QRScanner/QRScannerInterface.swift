@@ -20,3 +20,8 @@ public protocol QRScannerPresentable {
     func QRCapturedSuccessfully(_ text: String)
     func didTapAlertActionOK()
 }
+
+// MARK: - QRScanner Routable
+public protocol QRScannerRoutable {
+    func dismissModal(message: String)
+}

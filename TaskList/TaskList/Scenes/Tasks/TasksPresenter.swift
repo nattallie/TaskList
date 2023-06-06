@@ -50,10 +50,15 @@ public class TasksPresenter: TasksPresentable {
     }
     
     public func searchTextDidChange(_ text: String) {
-        filteredTasks = allTasks.filter {
-            $0.task.contains(text) ||
-            $0.title.contains(text) ||
-            $0.description.contains(text)
+        if text.isEmpty {
+            filteredTasks = allTasks
+        } else {
+            let lowerCasedText = text.lowercased()
+            filteredTasks = allTasks.filter {
+                $0.task.lowercased().contains(lowerCasedText) ||
+                $0.title.lowercased().contains(lowerCasedText) ||
+                $0.description.lowercased().contains(lowerCasedText)
+            }            
         }
         view.refreshAllTasks()
     }
@@ -63,7 +68,21 @@ public class TasksPresenter: TasksPresentable {
     }
     
     public func didTapQRButton() {
-        router.navigateToQRScanner()
+        router.navigateToQRScanner(capturedTextSaverCall: didCaptureQRMessage(message:))
+    }
+    
+    public func didCaptureQRMessage(message: String) {
+        view.setSearchText(message)
+        searchTextDidChange(message)
+    }
+    
+    public func didTapAlertActionOK() {
+        do {
+            let taskEntities: [TaskEntity] = try fetchTasksOfflineUseCase.fetch()
+            populateTasks(tasks: taskEntities)
+        } catch {
+            print("Error occured while fetching tasks offline \(error)")
+        }
     }
     
     // MARK: private helpers
@@ -86,8 +105,7 @@ public class TasksPresenter: TasksPresentable {
                 syncFetchedTasks()
             } catch {
                 if let error = error as? NetworkError, error == .noNetwork {
-                    let taskEntities: [TaskEntity] = try fetchTasksOfflineUseCase.fetch()
-                    populateTasks(tasks: taskEntities)
+                    view.showAlertMessage(title: Consts.Scenes.Tasks.noNetwork, message: Consts.Scenes.Tasks.noNetworkMessage)
                 } else {
                     view.endRefreshing()
                 }
@@ -100,7 +118,7 @@ public class TasksPresenter: TasksPresentable {
         filteredTasks = allTasks
         
         view.refreshAllTasks()
-        view.clearSearchText()
+        view.setSearchText("")
         view.endRefreshing()
     }
     
