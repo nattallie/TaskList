@@ -1,11 +1,8 @@
-Hello dear iOS dev prospect!
+# Task List
 
-This repository is supposed to act as a playground for your submission.
-Before getting started, please make sure to use this repository as a template on which you will commit and push your code regularly. Once you are ready, please mail us back the link to your repository. 
+Task List is a simple app that lets users view all tasks (grab from local storage or an api) or do text searches (input manually or scan a QR code). It also serves as a coding task for the interview. Details of the task are listed below.
 
-Below, you will find the **Task** definition. Happy Hacking :computer: and Good Luck :shamrock:
-
-# Task
+### Task Description
 
 Write a iOS application that connects to a remote API, downloads a certain set of resources, shows them in a list and provides some basic searching/filtering feature-set.
 In particular, the app should:
@@ -37,39 +34,3 @@ curl --request POST \
 ```
 
 The response will contain a json object, having the access token in `json["oauth"]["access_token"]`. For all subsequent calls this has to be added to the request headers as `Authorization: Bearer {access_token}`.
-
-A possible implementation in `Swift` could be the following. You don't have to copy over this one, feel free to indivualize it or use a different network library.
-
-```swift
-import Foundation
-
-let headers = [
-  "Authorization": "Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
-  "Content-Type": "application/json"
-]
-let parameters = [
-  "username": "365",
-  "password": "1"
-] as [String : Any]
-
-let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.baubuddy.de/index.php/login")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "POST"
-request.allHTTPHeaderFields = headers
-request.httpBody = postData as Data
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
