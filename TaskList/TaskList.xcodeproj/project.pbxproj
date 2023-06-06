@@ -15,6 +15,7 @@
 		0B04DC4C2A2CC8E80055D962 /* NetworkRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */; };
 		0B04DC4E2A2CC8FD0055D962 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */; };
 		0B04DC512A2CC9330055D962 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04DC502A2CC9330055D962 /* Consts.swift */; };
+		0B09C06D2A2FD400001E4AEA /* DeleteTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09C06C2A2FD400001E4AEA /* DeleteTasksUseCase.swift */; };
 		0B25120B2A2F2DAD00FC06E8 /* TasksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25120A2A2F2DAD00FC06E8 /* TasksRouter.swift */; };
 		0B25120D2A2F32F000FC06E8 /* QRScannerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25120C2A2F32F000FC06E8 /* QRScannerRouter.swift */; };
 		0B5DC2C82A2DF8F0008A9A61 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B5DC2C62A2DF8F0008A9A61 /* Tasks.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 		0B04DC4B2A2CC8E80055D962 /* NetworkRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestMethod.swift; sourceTree = "<group>"; };
 		0B04DC4D2A2CC8FD0055D962 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0B04DC502A2CC9330055D962 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		0B09C06C2A2FD400001E4AEA /* DeleteTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTasksUseCase.swift; sourceTree = "<group>"; };
 		0B25120A2A2F2DAD00FC06E8 /* TasksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRouter.swift; sourceTree = "<group>"; };
 		0B25120C2A2F32F000FC06E8 /* QRScannerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerRouter.swift; sourceTree = "<group>"; };
 		0B5DC2C72A2DF8F0008A9A61 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
@@ -136,6 +138,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		0B09C06B2A2FD3D8001E4AEA /* DeleteTasks */ = {
+			isa = PBXGroup;
+			children = (
+				0B09C06C2A2FD400001E4AEA /* DeleteTasksUseCase.swift */,
+			);
+			path = DeleteTasks;
+			sourceTree = "<group>";
+		};
 		0B5DC2C52A2DF8DA008A9A61 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +192,7 @@
 				0B93EB922A2D162E0024E7A0 /* AllTasks */,
 				0B5DC2CB2A2E42C5008A9A61 /* SaveTasks */,
 				0B5DC2D02A2E43F3008A9A61 /* AllTasksOffline */,
+				0B09C06B2A2FD3D8001E4AEA /* DeleteTasks */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -407,6 +418,7 @@
 				0B93EB9B2A2D1AE30024E7A0 /* TaskDetails.swift in Sources */,
 				0B95779E2A2CC06E00F337D8 /* SceneDelegate.swift in Sources */,
 				0B04DC442A2CC3E00055D962 /* TasksUIModel.swift in Sources */,
+				0B09C06D2A2FD400001E4AEA /* DeleteTasksUseCase.swift in Sources */,
 				0B93EBAF2A2D30230024E7A0 /* UIColor.initFromHex.swift in Sources */,
 				0B04DC4E2A2CC8FD0055D962 /* NetworkError.swift in Sources */,
 				0B9577B32A2CC39A00F337D8 /* TasksViewController.swift in Sources */,

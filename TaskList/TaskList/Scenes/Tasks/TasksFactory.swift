@@ -22,7 +22,8 @@ public struct TasksFactory {
             authUseCase: AuthUseCaseImpl(),
             fetchTasksUseCase: AllTasksUseCaseImpl(),
             saveTasksLocallyUseCase: SaveTasksLocallyUseCaseImpl(),
-            fetchTasksOfflineUseCase: AllTasksOfflineUseCaseImpl()
+            fetchTasksOfflineUseCase: AllTasksOfflineUseCaseImpl(),
+            deleteTasksOfflineUseCase: DeleteTasksUseCaseImpl()
         )
         
         viewController.presenter = presenter

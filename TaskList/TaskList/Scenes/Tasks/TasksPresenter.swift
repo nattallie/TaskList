@@ -16,6 +16,7 @@ public class TasksPresenter: TasksPresentable {
     private let fetchTasksUseCase: AllTasksUseCase
     private let saveTasksLocallyUseCase: SaveTasksLocallyUseCase
     private let fetchTasksOfflineUseCase: AllTasksOfflineUseCase
+    private let deleteTasksOfflineUseCase: DeleteTasksUseCase
     private var allTasks: [TaskDetails] = []
     private var filteredTasks: [TaskDetails] = []
     
@@ -28,7 +29,8 @@ public class TasksPresenter: TasksPresentable {
         authUseCase: AuthUseCase,
         fetchTasksUseCase: AllTasksUseCase,
         saveTasksLocallyUseCase: SaveTasksLocallyUseCase,
-        fetchTasksOfflineUseCase: AllTasksOfflineUseCase
+        fetchTasksOfflineUseCase: AllTasksOfflineUseCase,
+        deleteTasksOfflineUseCase: DeleteTasksUseCase
     ) {
         self.view = view
         self.router = router
@@ -36,11 +38,12 @@ public class TasksPresenter: TasksPresentable {
         self.fetchTasksUseCase = fetchTasksUseCase
         self.saveTasksLocallyUseCase = saveTasksLocallyUseCase
         self.fetchTasksOfflineUseCase = fetchTasksOfflineUseCase
+        self.deleteTasksOfflineUseCase = deleteTasksOfflineUseCase
     }
     
     // MARK: Task Presentable
     public var numberOfTasks: Int {
-        return filteredTasks.count
+        filteredTasks.count
     }
     
     public func viewDidLoad() {
@@ -136,6 +139,11 @@ public class TasksPresenter: TasksPresentable {
     }
     
     private func syncFetchedTasks() {
-        saveTasksLocallyUseCase.sync(parameters: .init(tasks: allTasks))
+        do {
+            try deleteTasksOfflineUseCase.delete()
+            saveTasksLocallyUseCase.sync(parameters: .init(tasks: allTasks))
+        } catch {
+            print("Error occured while syncing fetched tasks \(error)")
+        }
     }
 }
