@@ -13,6 +13,8 @@ public protocol TasksViewable: AnyObject {
     func setSearchText(_ text: String)
     func endRefreshing()
     func showAlertMessage(title: String, message: String)
+    func startLoading()
+    func stopLoading()
 }
 
 // MARK: - Tasks Presentable

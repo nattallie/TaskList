@@ -18,6 +18,8 @@ public class TasksPresenter: TasksPresentable {
     private let fetchTasksOfflineUseCase: AllTasksOfflineUseCase
     private var allTasks: [TaskDetails] = []
     private var filteredTasks: [TaskDetails] = []
+    
+    private var isFirstFetch: Bool = true
 
     // MARK: initializer
     init(
@@ -88,6 +90,9 @@ public class TasksPresenter: TasksPresentable {
     // MARK: private helpers
     private func refreshAllTasks() {
         Task.init {
+            if isFirstFetch {
+                view.startLoading()
+            }
             do {
                 let authEntity = try await authUseCase.auth(
                     parameters: .init(
@@ -104,6 +109,10 @@ public class TasksPresenter: TasksPresentable {
                 populateTasks(tasks: taskEntities)
                 syncFetchedTasks()
             } catch {
+                if isFirstFetch {
+                    view.stopLoading()
+                    isFirstFetch = false
+                }
                 if let error = error as? NetworkError, error == .noNetwork {
                     view.showAlertMessage(title: Consts.Scenes.Tasks.noNetwork, message: Consts.Scenes.Tasks.noNetworkMessage)
                 } else {
@@ -119,6 +128,10 @@ public class TasksPresenter: TasksPresentable {
         
         view.refreshAllTasks()
         view.setSearchText("")
+        if isFirstFetch {
+            view.stopLoading()
+            isFirstFetch = false
+        }
         view.endRefreshing()
     }
     

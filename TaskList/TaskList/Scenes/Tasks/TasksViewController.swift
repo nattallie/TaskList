@@ -65,6 +65,12 @@ public class TasksViewController: UIViewController {
         return tableView
     }()
     
+    private let spinner: UIActivityIndicatorView = {
+        let spinner: UIActivityIndicatorView = .init(style: .medium)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
     // MARK: Properties
     public var presenter: TasksPresentable!
     
@@ -100,6 +106,7 @@ public class TasksViewController: UIViewController {
         containerView.addSubview(QRButton)
         containerView.addSubview(searchBar)
         containerView.addSubview(tableView)
+        containerView.addSubview(spinner)
         tableView.addSubview(refreshControl)
     }
     
@@ -116,6 +123,9 @@ public class TasksViewController: UIViewController {
             searchBar.leadingConstraint(toView: containerView, constant: Model.Layout.horizontalMargin),
             searchBar.trailingConstraint(toView: containerView, constant: -Model.Layout.horizontalMargin),
             searchBar.topConstraint(toView: titleLabel, attribute: .bottom, constant: Model.Layout.spacing),
+            
+            spinner.centerXConstraint(toView: containerView),
+            spinner.centerYConstraint(toView: containerView),
             
             tableView.leadingConstraint(toView: containerView, constant: Model.Layout.horizontalMargin),
             tableView.trailingConstraint(toView: containerView, constant: -Model.Layout.horizontalMargin),
@@ -204,6 +214,18 @@ extension TasksViewController: TasksViewable {
             
         DispatchQueue.main.async {
             self.present(alert, animated: true)
+        }
+    }
+    
+    public func startLoading() {
+        DispatchQueue.main.async {
+            self.spinner.startAnimating()
+        }
+    }
+    
+    public func stopLoading() {
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
         }
     }
 }
