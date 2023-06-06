@@ -18,9 +18,11 @@ final class AllTasksOfflineUseCaseImpl: AllTasksOfflineUseCase {
     private let managedContext = AppDelegate.sharedAppDelegate.coreDataManager.managedContext
     
     func fetch() throws -> [TaskEntity] {
-        let tasksFetch: NSFetchRequest<TaskDetailsEntity> = TaskDetailsEntity.fetchRequest()
+        let tasksFetchRequest: NSFetchRequest<TaskDetailsEntity> = TaskDetailsEntity.fetchRequest()
+        tasksFetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(TaskDetailsEntity.task), ascending: true)]
+        
         do {
-            let results = try managedContext.fetch(tasksFetch)
+            let results = try managedContext.fetch(tasksFetchRequest)
             return results.map { .init(from: $0) }
         } catch {
             throw error
